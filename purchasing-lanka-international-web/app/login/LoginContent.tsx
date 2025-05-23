@@ -1,16 +1,48 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaCheckCircle } from 'react-icons/fa';
 
-export default function LoginContent() {
-  const router = useRouter();
+// Wrapper Component for useSearchParams to be inside a <Suspense> boundary
+function RegistrationSuccessMessage() {
   const searchParams = useSearchParams();
   const registered = searchParams?.get('registered');
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (registered === 'true') {
+      setShow(true);
+      const timer = setTimeout(() => setShow(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [registered]);
+
+  if (!show) return null;
+
+  return (
+    <motion.div 
+      className="fixed top-20 right-4 z-50 bg-green-900 text-white p-4 rounded-lg shadow-lg max-w-md"
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+    >
+      <div className="flex items-center">
+        <FaCheckCircle className="text-green-400 mr-2 text-xl" />
+        <div>
+          <p className="font-medium">Registration Successful!</p>
+          <p className="text-sm text-green-300">Please login with your new account</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function LoginContent() {
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     email: '',
@@ -21,17 +53,6 @@ export default function LoginContent() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showRegistrationSuccess, setShowRegistrationSuccess] = useState(false);
-
-  useEffect(() => {
-    if (registered === 'true') {
-      setShowRegistrationSuccess(true);
-      const timer = setTimeout(() => {
-        setShowRegistrationSuccess(false);
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [registered]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -82,22 +103,9 @@ export default function LoginContent() {
   return (
     <section className="px-4 md:px-16 py-16 bg-black min-h-screen">
       <AnimatePresence>
-        {showRegistrationSuccess && (
-          <motion.div 
-            className="fixed top-20 right-4 z-50 bg-green-900 text-white p-4 rounded-lg shadow-lg max-w-md"
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-          >
-            <div className="flex items-center">
-              <FaCheckCircle className="text-green-400 mr-2 text-xl" />
-              <div>
-                <p className="font-medium">Registration Successful!</p>
-                <p className="text-sm text-green-300">Please login with your new account</p>
-              </div>
-            </div>
-          </motion.div>
-        )}
+        <Suspense fallback={null}>
+          <RegistrationSuccessMessage />
+        </Suspense>
       </AnimatePresence>
 
       <div className="max-w-md mx-auto">
@@ -122,71 +130,59 @@ export default function LoginContent() {
         >
           <form onSubmit={handleSubmit} noValidate>
             <div className="mb-4">
-              <label htmlFor="email" className="text-sm text-white block mb-2">Email</label>
-              <div className="relative">
-                <FaEnvelope className="absolute left-3 top-3 text-gray-500" />
+              <label htmlFor="email" className="block text-white mb-1">Email</label>
+              <div className="flex items-center bg-gray-800 rounded-md px-3 py-2">
+                <FaEnvelope className="text-gray-400 mr-2" />
                 <input
                   type="email"
+                  id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full py-2 pl-10 pr-3 rounded-lg bg-gray-800 text-white focus:outline-none ${
-                    errors.email ? 'border border-red-500' : ''
-                  }`}
+                  className="bg-transparent outline-none w-full text-white"
                 />
               </div>
               {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
 
-            <div className="mb-4">
-              <label htmlFor="password" className="text-sm text-white block mb-2">Password</label>
-              <div className="relative">
-                <FaLock className="absolute left-3 top-3 text-gray-500" />
+            <div className="mb-6">
+              <label htmlFor="password" className="block text-white mb-1">Password</label>
+              <div className="flex items-center bg-gray-800 rounded-md px-3 py-2">
+                <FaLock className="text-gray-400 mr-2" />
                 <input
                   type={showPassword ? 'text' : 'password'}
+                  id="password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className={`w-full py-2 pl-10 pr-10 rounded-lg bg-gray-800 text-white focus:outline-none ${
-                    errors.password ? 'border border-red-500' : ''
-                  }`}
+                  className="bg-transparent outline-none w-full text-white"
                 />
-                <span
-                  className="absolute right-3 top-3 text-gray-500 cursor-pointer"
-                  onClick={() => setShowPassword(prev => !prev)}
+                <button
+                  type="button"
+                  className="text-gray-400 ml-2"
+                  onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </span>
+                </button>
               </div>
               {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
             </div>
 
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center text-sm text-white">
-                <input
-                  type="checkbox"
-                  name="rememberMe"
-                  checked={formData.rememberMe}
-                  onChange={handleChange}
-                  className="mr-2"
-                />
-                Remember me
-              </div>
-              <Link href="/forgot-password" className="text-blue-400 hover:underline text-sm">Forgot password?</Link>
-            </div>
-
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition"
+              className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-md transition duration-300"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Signing in...' : 'Sign In'}
             </button>
-
-            <p className="text-center text-gray-400 mt-4">
-              Don’t have an account? <Link href="/register" className="text-blue-400 hover:underline">Register</Link>
-            </p>
           </form>
+
+          <p className="text-gray-400 text-sm mt-4 text-center">
+            Don't have an account?{' '}
+            <Link href="/register" className="text-green-500 hover:underline">
+              Sign up
+            </Link>
+          </p>
         </motion.div>
       </div>
     </section>
