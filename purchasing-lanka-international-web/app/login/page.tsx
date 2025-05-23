@@ -1,13 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaCheckCircle } from 'react-icons/fa';
 
-export default function LoginPage() {
+// Create a client component that uses searchParams
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const registered = searchParams?.get('registered');
@@ -275,6 +276,20 @@ export default function LoginPage() {
           </p>
         </div>
       </div>
-    </section>
+    </section>  );
+}
+
+// Main page component with Suspense boundary
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="px-4 md:px-16 py-16 bg-black min-h-screen flex items-center justify-center">
+        <div className="text-white">
+          <p>Loading login page...</p>
+        </div>
+      </div>
+    }>
+      <LoginContent />
+    </Suspense>
   );
 }
