@@ -208,7 +208,7 @@ export default function RegisterPage() {
                     value={formData.email}
                     onChange={handleChange}
                     className={`w-full bg-gray-800 text-white pl-10 pr-4 py-2 rounded border ${errors.email ? 'border-red-500' : 'border-gray-700'} focus:outline-none focus:border-white`}
-                    placeholder="name@example.com"
+                    placeholder="oshadhak@gmail.com"
                   />
                 </div>
                 {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
@@ -227,7 +227,7 @@ export default function RegisterPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     className={`w-full bg-gray-800 text-white pl-10 pr-4 py-2 rounded border ${errors.phone ? 'border-red-500' : 'border-gray-700'} focus:outline-none focus:border-white`}
-                    placeholder="+94 77 123 4567"
+                    placeholder="+94 XX XXX XXXX"
                   />
                 </div>
                 {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
