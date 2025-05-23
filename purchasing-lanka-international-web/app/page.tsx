@@ -132,7 +132,7 @@ export default function Home() {
             Grocery Shopping Made Easy
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            Order your groceries online, choose your preferred supermarket, and we'll deliver everything straight to your doorstep.
+            Order your groceries online, choose your preferred supermarket, and we&apos;ll deliver everything straight to your doorstep.
           </p>
           
           {/* Search bar */}
@@ -362,7 +362,7 @@ export default function Home() {
                 />
               </div>
               <h3 className="text-white text-xl mb-2">Super City</h3>
-              <p className="text-gray-400 mb-4">Get fresh groceries from Sri Lanka's leading supermarket chain. Known for quality and variety.</p>
+              <p className="text-gray-400 mb-4">Get fresh groceries from Sri Lanka&apos;s leading supermarket chain. Known for quality and variety.</p>
               <div className="flex items-center justify-between">
                 <div className="flex">
                   {[...Array(4)].map((_, i) => (
@@ -619,7 +619,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-300 italic">
-                "Purchasing Lanka International has saved me so much time! I can now get all my favorite products from Food City without leaving my home."
+                &quot;Purchasing Lanka International has saved me so much time! I can now get all my favorite products from Food City without leaving my home.&quot;
               </p>
             </motion.div>
             
@@ -650,7 +650,7 @@ export default function Home() {
                 <FaStar className="text-gray-600" />
               </div>
               <p className="text-gray-300 italic">
-                "The ability to choose which supermarket I want to order from makes this service truly unique. Highly recommended!"
+                &quot;The ability to choose which supermarket I want to order from makes this service truly unique. Highly recommended!&quot;
               </p>
             </motion.div>
             
@@ -680,7 +680,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-300 italic">
-                "The delivery is always on time and the groceries arrive fresh. Their customer service is excellent when I needed help with my order."
+                &quot;The delivery is always on time and the groceries arrive fresh. Their customer service is excellent when I needed help with my order.&quot;
               </p>
             </motion.div>
             
@@ -711,7 +711,7 @@ export default function Home() {
                 <FaStar className="text-yellow-500 opacity-50" />
               </div>
               <p className="text-gray-300 italic">
-                "Being able to compare prices across different supermarkets before ordering has helped me save money while still getting quality products."
+                &quot;Being able to compare prices across different supermarkets before ordering has helped me save money while still getting quality products.&quot;
               </p>
             </motion.div>
           </div>
