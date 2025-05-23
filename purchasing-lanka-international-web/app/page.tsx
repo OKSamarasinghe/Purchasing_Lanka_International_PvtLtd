@@ -129,7 +129,7 @@ export default function Home() {
             />
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-            Grocery Shopping Made Easy
+            Oshadha Shopping Made Easy
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
             Order your groceries online, choose your preferred supermarket, and we&apos;ll deliver everything straight to your doorstep.
