@@ -185,7 +185,7 @@ const blogPosts = [
       
       <p>Remember that our online grocery delivery service is designed to be the most efficient option of all—allowing you to shop from anywhere, at any time, with delivery straight to your doorstep!</p>
     `,
-    author: "Samantha Perera",
+    author: "Oshadha Samarasinghe",
     date: "March 10, 2023",
     category: "Grocery Shopping",
     readTime: 5,
@@ -855,7 +855,7 @@ export default function BlogsPage() {
                     src={
                       currentBlog.author === "Jehan Fernando" ? "/jehanf2.png" : 
                       currentBlog.author === "Priyantha Mahaulpathagama" ? "/priyanthamu.webp" : 
-                      currentBlog.author === "Samantha Perera" ? "/rowans.webp" : 
+                      currentBlog.author === "Oshadha Samarasinghe" ? "/osh.jpg" : 
                       "/author-default.png"
                     }
                     alt={currentBlog.author}
