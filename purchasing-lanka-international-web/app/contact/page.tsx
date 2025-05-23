@@ -238,7 +238,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         className={`w-full px-4 py-2 rounded bg-gray-800 text-white border ${errors.name ? 'border-red-500' : 'border-gray-700'} focus:outline-none focus:border-white`}
-                        placeholder="John Doe"
+                        placeholder="Oshadha Samarasinghe"
                       />
                       {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                     </div>
@@ -250,7 +250,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         className={`w-full px-4 py-2 rounded bg-gray-800 text-white border ${errors.email ? 'border-red-500' : 'border-gray-700'} focus:outline-none focus:border-white`}
-                        placeholder="you@example.com"
+                        placeholder="oshadhak@gmail.com"
                       />
                       {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                     </div>
