@@ -1,0 +1,9 @@
+{
+  "buildCommand": "DISABLE_ESLINT_PLUGIN=true NEXT_DISABLE_ESLINT=1 next build",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "env": {
+    "DISABLE_ESLINT_PLUGIN": "true",
+    "NEXT_DISABLE_ESLINT": "1"
+  }
+}
