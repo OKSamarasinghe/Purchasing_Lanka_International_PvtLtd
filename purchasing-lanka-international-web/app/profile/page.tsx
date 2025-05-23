@@ -55,8 +55,8 @@ export default function ProfilePage() {
   const [userData, setUserData] = useState<UserProfile>({
     name: 'Oshadha Samarasinghe',
     email: 'oshadhak@gmail.com',
-    phone: '+94 77 123 4567',
-    address: '42 Temple Road',
+    phone: '+94 79 123 4567',
+    address: '42 Temple Road Pannipitiya',
     city: 'Kottawa',
     postalCode: '10300',
     memberSince: 'January 15, 2023',
