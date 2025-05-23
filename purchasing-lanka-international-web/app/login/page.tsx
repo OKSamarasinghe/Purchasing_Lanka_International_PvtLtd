@@ -3,31 +3,22 @@
 import { Suspense, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa'
 
 // Loading component for Suspense fallback
 function LoginLoading() {
   return (
-    <section className="px-4 md:px-16 py-16 bg-black min-h-screen">
-      <div className="max-w-md mx-auto">
-        <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 w-[200px] h-[80px] bg-gray-700 rounded animate-pulse"></div>
-          <div className="h-8 bg-gray-700 rounded mb-2 animate-pulse"></div>
-          <div className="h-4 bg-gray-700 rounded animate-pulse"></div>
-        </div>
-        
-        <div className="bg-gray-900 rounded-lg p-6 md:p-8">
-          <div className="animate-pulse space-y-5">
+    <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="bg-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-700 rounded mb-6"></div>
+          <div className="space-y-4">
             <div className="h-12 bg-gray-700 rounded"></div>
             <div className="h-12 bg-gray-700 rounded"></div>
             <div className="h-12 bg-gray-700 rounded"></div>
-            <div className="h-10 bg-gray-700 rounded"></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 
