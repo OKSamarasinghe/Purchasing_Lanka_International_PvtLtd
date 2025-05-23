@@ -7,14 +7,14 @@ import Link from 'next/link'
 // Loading component for Suspense fallback
 function LoginLoading() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="bg-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded mb-6"></div>
+          <div className="h-8 bg-gray-700 rounded mb-6"></div>
           <div className="space-y-4">
-            <div className="h-12 bg-gray-200 rounded"></div>
-            <div className="h-12 bg-gray-200 rounded"></div>
-            <div className="h-12 bg-gray-200 rounded"></div>
+            <div className="h-12 bg-gray-700 rounded"></div>
+            <div className="h-12 bg-gray-700 rounded"></div>
+            <div className="h-12 bg-gray-700 rounded"></div>
           </div>
         </div>
       </div>
@@ -52,26 +52,22 @@ function LoginForm() {
       setIsLoading(false)
     }
   }
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="bg-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Welcome Back</h1>
-          <p className="text-gray-600 mt-2">Sign in to Purchasing Lanka International</p>
-        </div>
-
-        {error && (
-          <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded mb-6">
+          <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
+          <p className="text-gray-300 mt-2">Sign in to Purchasing Lanka International</p>
+        </div>        {error && (
+          <div className="bg-red-900 border border-red-700 text-red-300 px-4 py-3 rounded mb-6">
             {error === 'unauthorized' && 'Please sign in to access this page'}
             {error === 'invalid' && 'Invalid email or password'}
             {error === 'expired' && 'Your session has expired. Please sign in again'}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+        <form onSubmit={handleSubmit} className="space-y-6">          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
               Email Address
             </label>
             <input
@@ -79,14 +75,14 @@ function LoginForm() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="w-full px-3 py-2 bg-gray-800 border border-gray-600 text-white rounded-md focus:outline-none focus:ring-2 focus:white focus:border-transparent placeholder-gray-400"
               placeholder="Enter your email"
               required
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
               Password
             </label>
             <input
@@ -94,26 +90,24 @@ function LoginForm() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="w-full px-3 py-2 bg-gray-800 border border-gray-600 text-white rounded-md focus:outline-none focus:ring-2 focus:white focus:border-transparent placeholder-gray-400"
               placeholder="Enter your password"
               required
             />
-          </div>
-
-          <div className="flex items-center justify-between">
+          </div>          <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
                 id="remember"
                 type="checkbox"
-                className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                className="h-4 w-4 text-white focus:white border-gray-600 bg-gray-800 rounded"
               />
-              <label htmlFor="remember" className="ml-2 block text-sm text-gray-700">
+              <label htmlFor="remember" className="ml-2 block text-sm text-gray-300">
                 Remember me
               </label>
             </div>
             <Link
               href="/forgot-password"
-              className="text-sm text-green-600 hover:text-green-500"
+              className="text-sm text-white hover:text-white"
             >
               Forgot password?
             </Link>
@@ -122,18 +116,16 @@ function LoginForm() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200"
+                className="w-full bg-white text-black py-2 rounded font-medium hover:bg-gray-300 transition flex items-center justify-center"
           >
             {isLoading ? 'Signing in...' : 'Sign In'}
           </button>
-        </form>
-
-        <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
+        </form>        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-400">
             Don&apos;t have an account?{' '}
             <Link
               href="/register"
-              className="text-green-600 hover:text-green-500 font-medium"
+              className="text-white hover:text-white font-medium"
             >
               Sign up here
             </Link>
@@ -143,7 +135,7 @@ function LoginForm() {
         <div className="mt-8 text-center">
           <Link
             href="/"
-            className="text-green-600 hover:text-green-500 text-sm font-medium"
+            className="text-white hover:text-white text-sm font-medium"
           >
             ← Back to Home
           </Link>
