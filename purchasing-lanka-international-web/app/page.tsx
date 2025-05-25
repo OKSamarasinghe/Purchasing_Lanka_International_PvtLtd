@@ -9,7 +9,7 @@ import { FaShoppingCart, FaArrowRight, FaSearch, FaStore, FaTruck, FaStar, FaBox
 // Featured products data for carousel
 const featuredProducts = [
   { id: 1, name: "Rice 5kg", price: 1200, image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0" },
-  { id: 2, name: "Fresh Vegetables Bundle", price: 850, image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&q=80&w=500" },
+  { id: 2, name: "Fresh Vegetables Bundle", price: 850, image: "https://images.unsplash.com/photo-1528733918455-5a59687cedf0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
   { id: 3, name: "Coconut", price: 150, image: "https://images.unsplash.com/photo-1627245784359-d8264960b62a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29jb251dCUyMG1pbGt8ZW58MHx8MHx8fDA%3D" },
   { id: 4, name: "Shampoo", price: 550, image: "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hhbXBvb3xlbnwwfHwwfHx8MA%3D%3D" },
 ];
